@@ -10,7 +10,10 @@ function dom(){
   document.write('<br>')
   //2.c
   document.write(document.images.length);
+  //2.d
   document.write(document.images[0].id);
+  //2.e
   document.write(document.links.length);
+  //2.f
   document.title = 'Cambio de titulo'
 }
