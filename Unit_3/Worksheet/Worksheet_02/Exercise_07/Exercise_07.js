@@ -5,12 +5,8 @@ function iniciar_array(x){
   return arr;
 }
 
-
  function sum_uno(a){
-   for (let i = 0; i < a.length; i++){
-     a[i]++;
-   }
-   return a;
+  return (a.map(function(x){return x + 1;}))
  }
 
  document.write(sum_uno(iniciar_array(0)));
