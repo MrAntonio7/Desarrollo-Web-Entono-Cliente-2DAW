@@ -68,31 +68,31 @@ class Buscaminas {
       var i = lista_ceros[x][0]
       var j = lista_ceros[x][1]
       if (i == 0 && j == 0){
-        lista_colindantes_a_cero.push([[i,j,matriz[i][j][1]/2],[i,j+1,matriz[i][j+1][1]/2],[i+1,j,matriz[i+1][j][1]/2],[i+1,j+1,matriz[i+1][j+1][1]/2]])
+        lista_colindantes_a_cero.push([[i,j,matriz[i][j][1]],[i,j+1,matriz[i][j+1][1]],[i+1,j,matriz[i+1][j][1]],[i+1,j+1,matriz[i+1][j+1][1]]])
       }
       else if (i == 0 && j == matriz[i].length-1){
-        lista_colindantes_a_cero.push([[i,j,matriz[i][j][1]/2],[i,j-1,matriz[i][j-1][1]/2],[i+1,j-1,matriz[i+1][j-1][1]/2],[i+1,j,matriz[i+1][j][1]/2]])
+        lista_colindantes_a_cero.push([[i,j,matriz[i][j][1]],[i,j-1,matriz[i][j-1][1]],[i+1,j-1,matriz[i+1][j-1][1]],[i+1,j,matriz[i+1][j][1]]])
       }
       else if (i == matriz.length-1 && j == matriz[i].length-1){
-        lista_colindantes_a_cero.push([[i,j,matriz[i][j][1]/2],[i,j-1,matriz[i][j-1][1]/2],[i-1,j-1,matriz[i-1][j-1][1]/2],[i-1,j,matriz[i-1][j][1]/2]])
+        lista_colindantes_a_cero.push([[i,j,matriz[i][j][1]],[i,j-1,matriz[i][j-1][1]],[i-1,j-1,matriz[i-1][j-1][1]],[i-1,j,matriz[i-1][j][1]]])
       }
       else if (i == matriz.length-1 && j == 0 ){
-        lista_colindantes_a_cero.push([[i,j,matriz[i][j][1]/2],[i-1,j,matriz[i-1][j][1]/2],[i-1,j+1,matriz[i-1][j+1][1]/2],[i,j+1,matriz[i][j+1][1]/2]])
+        lista_colindantes_a_cero.push([[i,j,matriz[i][j][1]],[i-1,j,matriz[i-1][j][1]],[i-1,j+1,matriz[i-1][j+1][1]],[i,j+1,matriz[i][j+1][1]]])
       }
       else if (i==0 && 1 <= j < matriz[i].length-1){
-        lista_colindantes_a_cero.push([[i,j,matriz[i][j][1]/2],[i,j-1,matriz[i][j-1][1]/2],[i+1,j-1,matriz[i+1][j-1][1]/2],[i+1,j,matriz[i+1][j][1]/2],[i+1,j+1,matriz[i+1][j+1][1]/2],[i,j+1,matriz[i][j+1][1]/2]])
+        lista_colindantes_a_cero.push([[i,j,matriz[i][j][1]],[i,j-1,matriz[i][j-1][1]],[i+1,j-1,matriz[i+1][j-1][1]],[i+1,j,matriz[i+1][j][1]],[i+1,j+1,matriz[i+1][j+1][1]],[i,j+1,matriz[i][j+1][1]]])
       }
       else if (1<=i<matriz.length-1 && j==matriz[i].length-1){
-        lista_colindantes_a_cero.push([[i,j,matriz[i][j][1]/2],[i-1,j,matriz[i-1][j][1]/2],[i-1,j-1,matriz[i-1][j-1][1]/2],[i,j-1,matriz[i][j-1][1]/2],[i+1,j-1,matriz[i+1][j-1][1]/2],[i+1,j,matriz[i+1][j][1]/2]])
+        lista_colindantes_a_cero.push([[i,j,matriz[i][j][1]],[i-1,j,matriz[i-1][j][1]],[i-1,j-1,matriz[i-1][j-1][1]],[i,j-1,matriz[i][j-1][1]],[i+1,j-1,matriz[i+1][j-1][1]],[i+1,j,matriz[i+1][j][1]]])
       }
       else if(i==matriz.length-1&&1<=j<matriz[i].length-1){
-        lista_colindantes_a_cero.push([[i,j,matriz[i][j][1]/2],[i,j-1,matriz[i][j-1][1]/2],[i-1,j-1,matriz[i-1][j-1][1]/2],[i-1,j,matriz[i-1][j][1]/2],[i-1,j+1,matriz[i-1][j+1][1]/2],[i,j+1,matriz[i][j+1][1]/2]])
+        lista_colindantes_a_cero.push([[i,j,matriz[i][j][1]],[i,j-1,matriz[i][j-1][1]],[i-1,j-1,matriz[i-1][j-1][1]],[i-1,j,matriz[i-1][j][1]],[i-1,j+1,matriz[i-1][j+1][1]],[i,j+1,matriz[i][j+1][1]]])
       }
       else if(1<=i<matriz.length-1&&j==0){
-        lista_colindantes_a_cero.push([[i,j,matriz[i][j][1]/2],[i-1,j,matriz[i-1][j][1]/2],[i-1,j+1,matriz[i-1][j+1][1]/2],[i,j+1,matriz[i][j+1][1]/2],[i+1,j+1,matriz[i+1][j+1][1]/2],[i+1,j,matriz[i+1][j][1]/2]])
+        lista_colindantes_a_cero.push([[i,j,matriz[i][j][1]],[i-1,j,matriz[i-1][j][1]],[i-1,j+1,matriz[i-1][j+1][1]],[i,j+1,matriz[i][j+1][1]],[i+1,j+1,matriz[i+1][j+1][1]],[i+1,j,matriz[i+1][j][1]]])
       }
       else if(1<=i<matriz.length-1&&1<=j<matriz[i].length-1){
-        lista_colindantes_a_cero.push([[i,j,matriz[i][j][1]/2],[i-1,j-1,matriz[i-1][j-1][1]/2],[i-1,j,matriz[i-1][j][1]/2],[i-1,j+1,matriz[i-1][j+1][1]/2],[i,j+1,matriz[i][j+1][1]/2],[i+1,j+1,matriz[i+1][j+1][1]/2],[i+1,j,matriz[i+1][j][1]/2],[i+1,j-1,matriz[i+1][j-1][1]/2],[i,j-1,matriz[i][j-1][1]/2]])
+        lista_colindantes_a_cero.push([[i,j,matriz[i][j][1]],[i-1,j-1,matriz[i-1][j-1][1]],[i-1,j,matriz[i-1][j][1]],[i-1,j+1,matriz[i-1][j+1][1]],[i,j+1,matriz[i][j+1][1]],[i+1,j+1,matriz[i+1][j+1][1]],[i+1,j,matriz[i+1][j][1]],[i+1,j-1,matriz[i+1][j-1][1]],[i,j-1,matriz[i][j-1][1]]])
       }
     }
     //console.log(lista_colindantes_a_cero);
@@ -155,9 +155,9 @@ class Buscaminas {
   desplegar(x,y){
     if(this.partida==1&&this.tiempo>=0){
     this.abrir_casilla(x,y)
-    body.innerHTML=" "
-    document.write("<body id=\"body\"></body>")
-    this.iniciar_tabla(this.matriz_vacia)
+     body.innerHTML=" "
+     document.write("<body id=\"body\"></body>")
+     this.iniciar_tabla(this.matriz_vacia)
   }
   }
 
@@ -179,14 +179,18 @@ class Buscaminas {
       }
       else if(this.matriz[x][y][1]>0){
         for (let j = 0; j < numeros.length; j++) {
-            this.matriz_vacia[x].splice(y,1,[this.matriz[x][y][0],this.matriz[x][y][1]/2])
+            this.matriz_vacia[x].splice(y,1,[this.matriz[x][y][0],this.matriz[x][y][1]])
 
         }
 
 
       }else{
+        body.innerHTML=" "
+        document.write("<body id=\"body\"></body>")
+        this.iniciar_tabla(this.matriz_vacia)
         this.partida = this.partida - 1
-        document.write('<div align=center><p >Pierdes</p></div>')
+        console.log('Has perdido')
+        this.matriz_vacia = this.matriz
 
       }
     }
@@ -221,8 +225,6 @@ class Buscaminas {
   // }
 
   main(){
-    //document.write('<div align=center><p>' + this.cronometro() + '</p></div>')
-    this.calcular_casillas(this.randomizar_bombas(this.matriz));
     this.ceros_colindantes(this.calcular_casillas(this.randomizar_bombas(this.matriz)));
   }
 }
@@ -235,5 +237,4 @@ function random(n) {
 var B = new Buscaminas();
 B.main()
 B.iniciar_tabla(B.matriz_vacia)
-//B.desplegar(6,0)
 //window.onload=B.cronometro();
