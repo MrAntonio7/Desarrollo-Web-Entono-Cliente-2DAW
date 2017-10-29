@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <style type="text/css">
+  #div {
+    background: silver;
+    height: 300px;
+    text-align: center;
+    font: 30px/300px Helvetica, Arial, sans-serif;
+  }
+  </style>
+  <script src="https://hammerjs.github.io/dist/hammer.js"></script>
+
+  <script language="javascript" type="text/javascript">
+
+  var div = document.getElementById('div');
+
+  var manager = new Hammer.Manager(div);
+
+  // create a pinch and rotate recognizer
+  // these require 2 pointers
+  var pinch = new Hammer.Pinch();
+  var rotate = new Hammer.Rotate();
+
+  // we want to detect both the same time
+  pinch.recognizeWith(rotate);
+
+  // add to the Manager
+  manager.add([pinch, rotate]);
+
+  manager.on("pinch rotate", function(ev) {div.textContent += ev.type +" ";});
+
+  </script>
+
+  <title>Hammer</title>
+</head>
+<body>
+<div id="div"></div>
+</body>
+</html>

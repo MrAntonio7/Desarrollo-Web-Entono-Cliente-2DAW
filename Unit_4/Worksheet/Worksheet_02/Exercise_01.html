@@ -1,0 +1,55 @@
+<!-- Prueba los touch events. Para ello coloca un div y muestra la coor x e y en la que se pulsa
+Mejora el ejercicio anterior para que muestre info de tantos puntos como soporte mi pantalla
+Haz un ejemeplo básico de uso de la libreria Hammer -->
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+  <style type="text/css">
+    #xy {
+
+      color: #000000;
+
+      font-family: Arial, Helvetica, sans-serif;
+
+      font-size: 20px;
+
+      height: 300px;
+
+      overflow: auto;
+
+      width: 150px;
+
+    }
+  </style>
+
+  <script language="javascript" type="text/javascript">
+
+    function touchme(event) {
+
+      var xy = document.getElementById("xy");
+      xy.innerHTML =""
+      for (var i = 0; i < event.touches.length; i++) {
+        xy.innerHTML += 'x: ' + event.touches[i].pageX + ', y: ' + event.touches[i].pageY + '<br />';
+      }
+      // xy.innerHTML = 'x: ' + event.touches[0].pageX + ', y: ' + event.touches[0].pageY;
+    }
+
+    document.ontouchstart = function(event){touchme(event)};
+
+  </script>
+
+  <title>Touchme</title>
+
+</head>
+
+<body>
+
+  <div id="xy"></div>
+
+</body>
+
+</html>

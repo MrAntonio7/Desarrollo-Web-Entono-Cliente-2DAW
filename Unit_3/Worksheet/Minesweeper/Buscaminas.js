@@ -48,7 +48,7 @@ class Buscaminas {
           lista_casillas.push([i,j,matriz[i][j][1]])
       }
     }
-    //console.log(lista_casillas)
+    //Devuelve una lista con coordx, coordy, contenido
     return lista_casillas
   }
   ceros_colindantes(matriz){
@@ -95,7 +95,7 @@ class Buscaminas {
         lista_colindantes_a_cero.push([[i,j,matriz[i][j][1]],[i-1,j-1,matriz[i-1][j-1][1]],[i-1,j,matriz[i-1][j][1]],[i-1,j+1,matriz[i-1][j+1][1]],[i,j+1,matriz[i][j+1][1]],[i+1,j+1,matriz[i+1][j+1][1]],[i+1,j,matriz[i+1][j][1]],[i+1,j-1,matriz[i+1][j-1][1]],[i,j-1,matriz[i][j-1][1]]])
       }
     }
-    //console.log(lista_colindantes_a_cero);
+    //Devuelve una matriz con cada cero y sus casillas colindantes
     return lista_colindantes_a_cero
   }
 
@@ -137,7 +137,7 @@ class Buscaminas {
 
          lista_numeros.forEach(function(x){if (matriz[x[0]][x[1]][1] !=-1){matriz[x[0]][x[1]][1]++}})
 
-
+         //Hace las comprobaciones de todas las casillas donde haya  bomba y suma uno al contenido de cada casilla menos las que tengan bombas
         return matriz
       }
   casillas_con_numero(){
@@ -149,6 +149,7 @@ class Buscaminas {
         }
       }
     }
+    //Devuelve una lista con las coordenadas donde estan los numeros
     return lista_casillas_con_numero
   }
 
