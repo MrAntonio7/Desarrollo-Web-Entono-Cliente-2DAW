@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Cookies</title>
+    <script type="text/javascript" src="Exercise_02.js"></script>
+</head>
+
+<body>
+    <div id='conecta'>
+        <label for="userid">Usuario:</label>
+        <input type="text" name="userid" onkeypress=compruebaTecla(event)>
+    </div>
+    <div id='contenido'>
+        <p id='especial'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur earum necessitatibus provident, omnis perspiciatis corporis dolorem in molestias reiciendis eos beatae ratione atque officiis at esse totam illo dolore quidem.</p>
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reiciendis odio nisi doloremque optio, mollitia atque, vel in iste incidunt, quasi obcaecati aperiam nesciunt quos accusantium magni exercitationem praesentium soluta dolores!</p>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Non inventore provident tempora beatae debitis. Ipsum tenetur a, quaerat iusto soluta laboriosam quod? Porro consequuntur reprehenderit placeat dolorum blanditiis nobis distinctio.</p>
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. In at accusantium nihil nobis dolores, necessitatibus ex provident excepturi laborum similique veritatis quisquam molestiae neque autem id esse magni asperiores quam?</p>
+    </div>
+    <div id='desconecta' style="display:none;">
+        <button onclick="aumenta()">Aumentar tamaño de letra</button>
+        <button onclick="reduce()">Reducir tamaño de letra</button><br>
+        <button onclick="cambiaFondo()">Cambiar el fondo de la página</button>
+        <button onclick="cambiaBGParrafo()">Cambiar el fondo del párrafo</button><br>
+        <button onclick="pordefecto()">Vuelve a los ajustes por defecto.</button><br>
+        <button type="button" onclick="borraCookie()">Cerrar sesión</button>
+    </div>
+</body>
+
+</html>
