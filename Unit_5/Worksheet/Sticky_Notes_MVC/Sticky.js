@@ -37,7 +37,6 @@ class Controlador {
         console.log(this.coleccion);
         this.contador += 1;
 
-
     }
     modificar(id) {
         var nuevos_valores = this.v.campos;
@@ -49,6 +48,11 @@ class Controlador {
         console.log('Has modificado: ');
         console.log(this.coleccion[id]);
         this.v.drawNote(id, this.coleccion[id].titulo, this.coleccion[id].texto, this.coleccion[id].fecha);
+    }
+
+    borrar(id) {
+        this.v.wallpaper.removeChild(document.getElementById(id));
+        console.log('Has borrado la nota');
     }
 
 }
@@ -110,14 +114,24 @@ class Vista {
         i.style.textDecoration = "underline";
         i.style.fontWeight = "bold";
 
-        var b = document.createElement('button');
-        b.textContent = "Modificar";
-        b.style.backgroundColor = mycolor;
-        b.style.border = "1px solid black";
-        b.style.cursor = "pointer";
-        b.setAttribute("onclick", "c.modificar(" + id + ")");
-        b.style.marginLeft = "25%";
-        n.appendChild(b);
+        var b1 = document.createElement('button');
+        b1.textContent = "Modificar";
+        b1.style.backgroundColor = mycolor;
+        b1.style.border = "1px solid black";
+        b1.style.cursor = "pointer";
+        b1.setAttribute("onclick", "c.modificar(" + id + ")");
+        b1.style.marginLeft = "25%";
+        n.appendChild(b1);
+
+        var b2 = document.createElement('button');
+        b2.textContent = "Borrar";
+        b2.style.backgroundColor = mycolor;
+        b2.style.border = "1px solid black";
+        b2.style.cursor = "pointer";
+        b2.setAttribute("onclick", "c.borrar(" + id + ")");
+        b2.style.marginLeft = "25%";
+        n.appendChild(b2);
+
 
     }
 
