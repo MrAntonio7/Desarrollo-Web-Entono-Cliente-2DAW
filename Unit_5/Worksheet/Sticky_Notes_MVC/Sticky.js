@@ -13,8 +13,8 @@ class Nota {
 class Controlador {
     constructor() {
         this.coleccion = [];
-        this.contador = 0;
         this.v = new Vista();
+        this.contador = this.loadLocalStorage;
         this.addNote();
     }
 
@@ -33,6 +33,7 @@ class Controlador {
         var note = new Nota(this.contador, valores[0], valores[1], this.settime);
         this.v.drawNote(note.id, note.titulo, note.texto, note.fecha);
         this.coleccion.push(note);
+        this.saveLocalStorage();
         console.log('La colección de notas es: ');
         console.log(this.coleccion);
         this.contador += 1;
@@ -48,11 +49,30 @@ class Controlador {
         console.log('Has modificado: ');
         console.log(this.coleccion[id]);
         this.v.drawNote(id, this.coleccion[id].titulo, this.coleccion[id].texto, this.coleccion[id].fecha);
+        this.saveLocalStorage();
     }
 
     borrar(id) {
         this.v.wallpaper.removeChild(document.getElementById(id));
+        for (let i = 0; i < this.coleccion.length; i++) {
+            if (this.coleccion[i].id == id) {
+                this.coleccion.splice(i, 1);
+            }
+        }
+        this.saveLocalStorage();
         console.log('Has borrado la nota');
+    }
+    saveLocalStorage() {
+        localStorage.notas = JSON.stringify(this.coleccion);
+    }
+    get loadLocalStorage() {
+        if (localStorage.notas) {
+            this.coleccion = JSON.parse(localStorage.notas);
+            for (let i = 0; i < this.coleccion.length; i++) {
+                this.v.drawNote(this.coleccion[i].id, this.coleccion[i].titulo, this.coleccion[i].texto, this.coleccion[i].fecha);
+            }
+            return this.coleccion.length;
+        } else return 0;
     }
 
 }
@@ -86,8 +106,8 @@ class Vista {
         n.setAttribute('id', id);
         var mycolor = this.mycolors[Math.floor(Math.random() * this.mycolors.length)];
         n.style.background = mycolor;
-        n.style.width = '200px';
-        n.style.height = '200px';
+        n.style.width = '250px';
+        n.style.height = '250px';
         n.style.border = '2px solid black';
         n.style.borderRadius = '3px';
         n.style.boxShadow = "5px 5px 5px grey";
@@ -113,6 +133,7 @@ class Vista {
         i.style.fontSize = "22px";
         i.style.textDecoration = "underline";
         i.style.fontWeight = "bold";
+        j.style.fontSize = "12px";
 
         var b1 = document.createElement('button');
         b1.textContent = "Modificar";
@@ -120,7 +141,7 @@ class Vista {
         b1.style.border = "1px solid black";
         b1.style.cursor = "pointer";
         b1.setAttribute("onclick", "c.modificar(" + id + ")");
-        b1.style.marginLeft = "25%";
+        b1.style.marginLeft = "15%";
         n.appendChild(b1);
 
         var b2 = document.createElement('button');
