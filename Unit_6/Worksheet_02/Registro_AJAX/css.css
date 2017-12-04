@@ -1,0 +1,28 @@
+body {
+    padding: 0;
+    margin: 0;
+    background: #383838;
+    color: #fff;
+}
+
+h1 {
+    margin-left: 20%;
+    color: #bb1592;
+}
+
+fieldset {
+    width: 50%;
+    margin-left: 20%;
+}
+
+#resultado {
+    color: #72e228;
+    width: 50%;
+    height: 100px;
+    margin-left: 20%;
+    padding: 1%;
+}
+
+#texto {
+    margin: 0;
+}
