@@ -1,0 +1,73 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: #2e2e2e;
+    font-family: "Arvo";
+}
+
+h1 {
+    color: #2dc41f;
+    margin-left: 10%;
+}
+
+h2 {
+    color: #d14fac;
+    margin-left: 15%;
+}
+
+div {
+    margin-right: 10%;
+    padding-left: 15%;
+}
+
+table {
+    width: 100%;
+    margin-bottom: 100px;
+}
+
+td {
+    margin: 0;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    padding-left: 3%;
+    background: #eeeeee;
+    border-bottom: 1px solid #2e2e2e;
+}
+
+#cabecera td {
+    color: #f1c579;
+    background: #585858;
+}
+
+button {
+    background: #eeeeee;
+    padding: 10px;
+    font-size: 18px;
+    margin-left: 15%;
+}
+
+form {
+    color: #f1c579;
+    padding-top: 1%;
+    margin-left: 20%;
+}
+
+#remitente {
+    margin-left: 30px;
+}
+
+#destinatario {
+    margin-left: 15px;
+}
+
+#asunto {
+    margin-left: 55px;
+}
+
+#descripcion {
+    margin-left: 15px;
+}
+
+#enviar {
+    margin-left: 240px;
+}

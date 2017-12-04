@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<correos>
+    <correo>
+        <remitente>
+            Google
+        </remitente>
+        <destinatario>
+            Antonio
+        </destinatario>
+        <asunto>
+            Seguridad
+        </asunto>
+        <descripcion>
+            Confirma tu email
+        </descripcion>
+    </correo>
+    <correo>
+        <remitente>
+            Apple
+        </remitente>
+        <destinatario>
+            Antonio
+        </destinatario>
+        <asunto>
+            Te informamos
+        </asunto>
+        <descripcion>
+            Eres el nuevo presidente de Apple
+        </descripcion>
+    </correo>
+    <correo>
+        <remitente>
+            Samsung
+        </remitente>
+        <destinatario>
+            Antonio
+        </destinatario>
+        <asunto>
+            Enhorabuena
+        </asunto>
+        <descripcion>
+            Te regalamos un Samsung Galaxy S9+
+        </descripcion>
+    </correo>
+</correos>

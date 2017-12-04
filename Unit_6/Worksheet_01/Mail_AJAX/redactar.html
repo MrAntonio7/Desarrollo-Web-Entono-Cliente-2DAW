@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Arvo" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css.css">
+    <title>Email</title>
+</head>
+
+<body>
+    <h1>HackerMail</h1>
+
+    <a href="hackermail.html">
+        <button>Volver a la bandeja de entrada</button>
+    </a>
+
+    <h2>Redactar un nuevo email</h2>
+    <form action="enviar.php" method="post">
+        <p>Remitente: <input id="remitente" type="text" name="remitente" /></p>
+        <p>Destinatario: <input id="destinatario" type="text" name="destinatario" /></p>
+        <p>Asunto: <input id="asunto" type="text" name="asunto" /></p>
+        <p>Descripcion: <input id="descripcion" type="text" name="descripcion" /></p>
+        <input type="submit" id="enviar" />
+    </form>
+</body>
+
+</html>
