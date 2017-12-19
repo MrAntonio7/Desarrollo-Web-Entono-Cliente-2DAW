@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    $("p").click(function() {
-        $(this).html("caracandao el torrao");
-    });
+    $("ol>li").click(function() { $(this).hide(); });
+    $("ul>li").click(function() { $(this).hide(); });
+
 });
