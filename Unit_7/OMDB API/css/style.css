@@ -1,0 +1,14 @@
+input {
+    color: grey;
+}
+
+#flecha {
+    display: scroll;
+    position: fixed;
+    bottom: 30px;
+    right: 0px;
+}
+
+#navbarResponsive {
+    color: #fff;
+}
