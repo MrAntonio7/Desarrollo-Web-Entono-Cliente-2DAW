@@ -108,7 +108,7 @@ class Controlador {
     }
 
     cargarInformacion(id, pelicula) {
-        $(".row").empty();
+        // $(".row").empty();
         this.coleccion = [];
         var self = this;
         var url = "https://www.omdbapi.com/?i=" + id + "&plot=full&apikey=d30cfcf0";
@@ -148,8 +148,7 @@ class Controlador {
             for (let i = 0; i < self.coleccion.length; i++) {
                 if ($(this).text() == self.coleccion[i].title) {
                     console.table(self.coleccion[i]);
-                    $(window).unbind("scroll");
-                    $(window).off("scroll");
+                    // $(window).unbind("scroll");
                     self.cargarInformacion(self.coleccion[i].id, self.coleccion[i]);
                 }
             }
@@ -178,9 +177,9 @@ class Vista {
     }
 
     abrirPeli(titulo, poster, plot, realesed, runtime, genre, director, actors) {
-        $(window).unbind("scroll");
-        $(".row").empty();
-        $(".row").append("<div class='col-md-4'> <img class='img-fluid' src=" + poster + " alt=''></div><div class='col-md-8'><h3 class='my-3'>" + titulo + "</h3><p>" + plot + "</p><h3 class='my-3'>Detalles</h3><ul><li>" + realesed + "</li><li>" + runtime + "</li><li>" + genre + "</li><li>" + director + "</li><li> " + actors + "</li></ul></div><button type='button' class='btn btn-block btn-outline-danger'>Back</button>");
+        // $(window).unbind("scroll");
+        // $(".row").empty();
+        $(".row").append("<div id='centrado'><div class='col-md-4'> <img class='img-fluid' src=" + poster + " alt=''></div><div class='col-md-8'><h3 class='my-3'>" + titulo + "</h3><p>" + plot + "</p><h3 class='my-3'>Detalles</h3><ul><li>" + realesed + "</li><li>" + runtime + "</li><li>" + genre + "</li><li>" + director + "</li><li> " + actors + "</li></ul></div><button type='button' class='btn btn-block btn-outline-danger'>Back</button></div>");
     }
 
     noresultados() {
