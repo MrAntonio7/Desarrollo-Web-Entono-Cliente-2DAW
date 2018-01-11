@@ -12,3 +12,54 @@ input {
 #navbarResponsive {
     color: #fff;
 }
+
+.btn {
+    margin: 1%;
+}
+
+body {
+    background-color: #1b1e21;
+    color: #fff;
+}
+
+.card {
+    background-color: #111;
+}
+
+.titulo {
+    color: #da2121;
+}
+
+footer {
+    color: #fff;
+}
+
+.navbar {
+    background-color: #b70213!important;
+}
+
+footer {
+    background-color: #b70213!important;
+}
+
+a:hover {
+    color: #f77d7d;
+}
+
+*::selection {
+    background: #ff3c3c;
+    color: #fff;
+}
+
+.card:hover {
+    box-shadow: 0px 0px 150px #000000;
+    z-index: 2;
+    -webkit-transition: all 200ms ease-in;
+    -webkit-transform: scale(1.5);
+    -ms-transition: all 200ms ease-in;
+    -ms-transform: scale(1.5);
+    -moz-transition: all 200ms ease-in;
+    -moz-transform: scale(1.5);
+    transition: all 200ms ease-in;
+    transform: scale(1.1);
+}
