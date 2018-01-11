@@ -180,7 +180,7 @@ class Vista {
     abrirPeli(titulo, poster, plot, realesed, runtime, genre, director, actors) {
         $(window).unbind("scroll");
         $(".row").empty();
-        $(".row").append("<div class='col-md-4'> <img class='img-fluid' src=" + poster + " alt=''></div><div class='col-md-8'><h3 class='my-3'>" + titulo + "</h3><p>" + plot + "</p><h3 class='my-3'>Detalles</h3><ul><li>" + realesed + "</li><li>" + runtime + "</li><li>" + genre + "</li><li>" + director + "</li><li> " + actors + "</li></ul></div><button type='button' class='btn btn-outline-danger'>Back</button>");
+        $(".row").append("<div class='col-md-4'> <img class='img-fluid' src=" + poster + " alt=''></div><div class='col-md-8'><h3 class='my-3'>" + titulo + "</h3><p>" + plot + "</p><h3 class='my-3'>Detalles</h3><ul><li>" + realesed + "</li><li>" + runtime + "</li><li>" + genre + "</li><li>" + director + "</li><li> " + actors + "</li></ul></div><button type='button' class='btn btn-block btn-outline-danger'>Back</button>");
     }
 
     noresultados() {
