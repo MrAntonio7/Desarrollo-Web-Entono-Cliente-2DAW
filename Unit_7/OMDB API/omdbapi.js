@@ -5,6 +5,7 @@ class Pelicula {
         this.id = imdbID;
         this.poster = poster;
     }
+
     ampliarInformacion(released, runtime, genre, director, actors, plot) {
         this.released = released;
         this.runtime = runtime;
@@ -20,22 +21,18 @@ class Controlador {
         this.vista = new Vista();
         this.coleccion = [];
         this.paginas = 1;
-        $("input").val("Batman");
-        this.busqueda = $("input").val();
-        $(".my-4").text("Search: " + this.busqueda);
+        this.busqueda = this.vista.busqueda;
         this.consultar();
-        this.scroll(true);
         this.cargar(this.busqueda);
-
-        $('#loading').hide();
-
+        this.vista.offLoading();
+        this.portada = true;
     }
     consultar() {
         var self = this;
         $("input").keypress(function(e) {
             if (e.which == 13) {
                 self.paginas = 1;
-                self.busqueda = $("input").val();
+                self.busqueda = self.vista.busqueda;
                 $(".my-4").text("Search: " + self.busqueda);
                 self.cargar(self.busqueda);
             }
@@ -44,6 +41,7 @@ class Controlador {
     }
 
     scroll() {
+        console.log('true');
         var self = this;
         var win = $(window);
         win.scroll(function() {
@@ -55,18 +53,21 @@ class Controlador {
     }
     cargar(url) {
         $(".row").empty();
+        this.paginas = 1;
         this.coleccion = [];
         var self = this;
         this.vista.onLoading();
-        this.scroll();
         url = "https://www.omdbapi.com/?s=" + url + "&type=movie&apikey=d30cfcf0";
         $.ajax({
             url: url,
             dataType: 'json',
             success: function(response) {
                 if ((response.Response).toLowerCase() && response.totalResults > 0) {
+
+                    self.scroll();
                     self.guardarPelis(response.Search);
                     self.maquetarPelis();
+                    self.scroll();
                     self.paginas += 1;
                     console.log(self.coleccion);
                     self.abrirInformacion();
@@ -78,55 +79,64 @@ class Controlador {
     }
 
     cargarMas(url, pag) {
+        if (this.portada) {
+            var self = this;
+            $(window).unbind("scroll");
+            this.vista.onLoading();
+            setTimeout(function() {
+                self.vista.onLoading();
+                url = "https://www.omdbapi.com/?s=" + url + "&page=" + pag + "&type=movie&apikey=d30cfcf0";
+                $.ajax({
+                    url: url,
+                    dataType: 'json',
+                    success: function(response) {
+                        if ((response.Response).toLowerCase()) {
+                            var inicio = self.coleccion.length;
+                            if (response.totalResults > 0) {
+                                self.guardarPelis(response.Search);
+                                self.maquetarPelis(inicio);
+                                self.paginas += 1;
+                                console.log(self.coleccion);
+                                self.abrirInformacion();
+                            }
+                        }
+
+                    },
+                    timeout: 5000
+                });
+                self.scroll();
+                self.vista.offLoading();
+            }, 1500);
+        }
+    }
+
+    cargarInformacion(id, pelicula) {
+        $(".row").empty();
+        $.ajax().abort();
+        this.coleccion = [];
         var self = this;
-        $(window).unbind("scroll");
         this.vista.onLoading();
         setTimeout(function() {
-            self.vista.onLoading();
-            url = "https://www.omdbapi.com/?s=" + url + "&page=" + pag + "&type=movie&apikey=d30cfcf0";
+            var url = "https://www.omdbapi.com/?i=" + id + "&plot=full&apikey=d30cfcf0";
             $.ajax({
                 url: url,
                 dataType: 'json',
                 success: function(response) {
                     if ((response.Response).toLowerCase()) {
-                        var inicio = self.coleccion.length;
-                        if (response.totalResults > 0) {
-                            self.guardarPelis(response.Search);
-                            self.maquetarPelis(inicio);
-                            self.paginas += 1;
-                            console.log(self.coleccion);
-                            self.abrirInformacion();
-                        }
+                        $(window).unbind("scroll");
+                        self.vista.hideLoading();
+                        self.paginas = 1;
+                        pelicula.ampliarInformacion(response.Released, response.Runtime, response.Genre, response.Director, response.Actors, response.Plot);
+                        self.vista.abrirPeli(pelicula.title, pelicula.poster, pelicula.plot, pelicula.released, pelicula.runtime, pelicula.genre, pelicula.director, pelicula.actors);
+                        $(".btn").on("click", function() {
+                            $(".row").empty();
+                            self.cargar(self.busqueda);
+                        });
                     }
-
-                },
-                timeout: 5000
-            });
-            self.scroll();
-            self.vista.offLoading();
-        }, 1500);
-    }
-
-    cargarInformacion(id, pelicula) {
-        // $(".row").empty();
-        this.coleccion = [];
-        var self = this;
-        var url = "https://www.omdbapi.com/?i=" + id + "&plot=full&apikey=d30cfcf0";
-        $.ajax({
-            url: url,
-            dataType: 'json',
-            success: function(response) {
-                if ((response.Response).toLowerCase()) {
-                    $(window).unbind("scroll");
-                    pelicula.ampliarInformacion(response.Released, response.Runtime, response.Genre, response.Director, response.Actors, response.Plot);
-                    self.vista.abrirPeli(pelicula.title, pelicula.poster, pelicula.plot, pelicula.released, pelicula.runtime, pelicula.genre, pelicula.director, pelicula.actors);
-                    $(".btn").on("click", function() {
-                        $(".row").empty();
-                        self.cargar(self.busqueda);
-                    });
                 }
-            }
-        });
+            });
+
+        }, 3000);
     }
 
     guardarPelis(arrayPelis) {
@@ -148,7 +158,7 @@ class Controlador {
             for (let i = 0; i < self.coleccion.length; i++) {
                 if ($(this).text() == self.coleccion[i].title) {
                     console.table(self.coleccion[i]);
-                    // $(window).unbind("scroll");
+                    $(window).unbind("scroll");
                     self.cargarInformacion(self.coleccion[i].id, self.coleccion[i]);
                 }
             }
@@ -158,7 +168,9 @@ class Controlador {
 
 class Vista {
     constructor() {
-        // 
+        $("input").val("Batman");
+        this.busqueda = $("input").val();
+        $(".my-4").text("Search: " + this.busqueda);
     }
 
     anadirPeli(title, year, poster) {
@@ -176,10 +188,14 @@ class Vista {
         $('#loading').fadeOut();
     }
 
+    hideLoading() {
+        $('#loading').hide();
+    }
+
     abrirPeli(titulo, poster, plot, realesed, runtime, genre, director, actors) {
-        // $(window).unbind("scroll");
-        // $(".row").empty();
-        $(".row").append("<div id='centrado'><div class='col-md-4'> <img class='img-fluid' src=" + poster + " alt=''></div><div class='col-md-8'><h3 class='my-3'>" + titulo + "</h3><p>" + plot + "</p><h3 class='my-3'>Detalles</h3><ul><li>" + realesed + "</li><li>" + runtime + "</li><li>" + genre + "</li><li>" + director + "</li><li> " + actors + "</li></ul></div><button type='button' class='btn btn-block btn-outline-danger'>Back</button></div>");
+        $(window).unbind("scroll");
+        $(".row").empty();
+        $(".row").append("<div class='col-md-4'> <img class='img-fluid' src=" + poster + " alt=''></div><div class='col-md-8'><h3 class='my-3'>" + titulo + "</h3><p>" + plot + "</p><h3 class='my-3'>Detalles</h3><ul><li>" + realesed + "</li><li>" + runtime + "</li><li>" + genre + "</li><li>" + director + "</li><li> " + actors + "</li></ul></div><button type='button' class='btn btn-block btn-outline-danger'>Back</button>");
     }
 
     noresultados() {
